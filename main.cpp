@@ -1,19 +1,20 @@
 #include <iostream>
+#include <boost/beast/http.hpp>
+
 #include "config.h"
 #include "config.cpp"
 
 #include "utils.h"
 #include "utils.cpp"
 
+#include "http_response.h"
+#include "http_response.cpp"
+
 int main()
 {
   try
   {
     Config config(".env");
-    std::cout << "FILE_STORAGE: " << config.getFileStorage() << std::endl;
-    std::cout << "HTTP_PORT: " << config.getHttpPort() << std::endl;
-    std::cout << "LOG_LEVEL: " << config.getLogLevel() << std::endl;
-    std::cout << "DEBUG_MODE: " << config.getDebugMode() << std::endl;
   }
   catch (const std::runtime_error &error)
   {
