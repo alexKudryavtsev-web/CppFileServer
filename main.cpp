@@ -2,6 +2,9 @@
 #include "config.h"
 #include "config.cpp"
 
+#include "utils.h"
+#include "utils.cpp"
+
 int main()
 {
   try

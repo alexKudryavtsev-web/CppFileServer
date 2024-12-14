@@ -1,48 +1,11 @@
 #include "config.h"
+#include "utils.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <algorithm>
 
 using namespace std;
-
-string Config::trim(const string &str) const
-{
-  size_t first = str.find_first_not_of(" \t");
-  if (string::npos == first)
-  {
-    return str;
-  }
-  size_t last = str.find_last_not_of(" \t");
-  return str.substr(first, (last - first + 1));
-}
-
-template <typename T>
-T Config::parseValue(const string &value) const
-{
-  stringstream ss(value);
-  T result;
-  ss >> result;
-  if (ss.fail())
-  {
-    if constexpr (is_same_v<T, bool>)
-    {
-      string lowerValue = value;
-      transform(lowerValue.begin(), lowerValue.end(), lowerValue.begin(), ::tolower);
-      if (lowerValue == "true")
-        result = true;
-      else if (lowerValue == "false")
-        result = false;
-      else
-        throw runtime_error("Invalid boolean value: " + value);
-    }
-    else
-    {
-      throw runtime_error("Failed to convert value to the required type: " + value);
-    }
-  }
-  return result;
-}
 
 Config::Config(const string &envFilePath) : httpPort(8080), debugMode(false), logLevel("info")
 {

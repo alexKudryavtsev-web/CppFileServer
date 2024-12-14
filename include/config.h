@@ -19,10 +19,6 @@ private:
     std::string logLevel;
     bool debugMode;
     std::map<std::string, std::string> configMap;
-
-    std::string trim(const std::string& str) const;
-    template <typename T>
-    T parseValue(const std::string& value) const;
 };
 
 #endif
