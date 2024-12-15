@@ -7,14 +7,16 @@
 namespace beast = boost::beast;
 namespace http = beast::http;
 
-class HttpResponse {
+class HttpResponse
+{
 public:
-  HttpResponse(http::status status, std::string body = "");
+  HttpResponse(http::status status, std::string body = "", std::string contentType = "");
   http::response<http::string_body> build() const;
 
 private:
   http::status status_;
   std::string body_;
+  std::string contentType_;
 };
 
 #endif
