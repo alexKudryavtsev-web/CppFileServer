@@ -21,4 +21,6 @@ RUN g++ -o main main.cpp -lcpprest -lboost_system -lboost_thread -lboost_chrono 
 
 EXPOSE 8080
 
+VOLUME ["/app/storage"]
+
 CMD ["./main"]
