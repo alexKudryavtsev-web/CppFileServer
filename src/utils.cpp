@@ -49,7 +49,7 @@ std::string getContentType(const std::string &extension)
 {
   // Text
   if (extension == "txt")
-    return "text/plain";
+    return "text/plain; charset=utf-8";
   if (extension == "html")
     return "text/html";
   if (extension == "htm")
