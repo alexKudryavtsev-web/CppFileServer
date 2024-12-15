@@ -18,4 +18,6 @@ T parseValue(const std::string &value);
 
 std::string generateUUID();
 
+std::string getContentType(const std::string &extension);
+
 #endif
