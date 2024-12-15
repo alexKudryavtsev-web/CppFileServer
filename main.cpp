@@ -1,5 +1,4 @@
 #include <iostream>
-#include <boost/beast/http.hpp>
 
 #include "config.h"
 #include "config.cpp"
@@ -10,11 +9,26 @@
 #include "http_response.h"
 #include "http_response.cpp"
 
+#include "controller.h"
+#include "file_controller.h"
+#include "file_controller.cpp"
+
+#include "server.h"
+#include "server.cpp"
+
+#include "http_session.h"
+#include "http_session.cpp"
+
 int main()
 {
   try
   {
     Config config(".env");
+    std::cout << "Loaded config" << std::endl;
+    auto controller = std::make_shared<FileController>();
+
+    Server server(config.getHttpPort(), controller);
+    server.run();
   }
   catch (const std::runtime_error &error)
   {
