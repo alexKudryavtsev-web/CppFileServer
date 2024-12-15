@@ -25,7 +25,7 @@ int main()
   {
     Config config(".env");
     std::cout << "Loaded config" << std::endl;
-    auto controller = std::make_shared<FileController>();
+    auto controller = std::make_shared<FileController>(config.getFileStorage());
 
     Server server(config.getHttpPort(), controller);
     server.run();

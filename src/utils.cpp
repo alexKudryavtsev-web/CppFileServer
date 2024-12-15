@@ -37,3 +37,10 @@ T parseValue(const std::string &value)
   }
   return result;
 }
+
+std::string generateUUID()
+{
+  boost::uuids::random_generator generator;
+  boost::uuids::uuid uuid = generator();
+  return boost::uuids::to_string(uuid);
+}
