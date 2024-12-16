@@ -27,7 +27,7 @@ RUN chown appuser:appuser run.sh
 RUN chmod 755 run.sh
 
 RUN g++ -o main main.cpp -lcpprest -lboost_system -lboost_thread -lboost_chrono -lboost_random -lssl -lcrypto
-RUN g++ -o test_main ./test/*.cpp -lboost_unit_test_framework
+RUN g++ -o test_main ./test/test_main.cpp -lboost_unit_test_framework
 
 EXPOSE 8080
 
