@@ -2,6 +2,7 @@
 #define FILE_CONTROLLER_H
 
 #include "controller.h"
+#include "file_service.h"
 #include <boost/beast/http.hpp>
 #include <optional>
 #include <string>
@@ -17,7 +18,7 @@ public:
   std::optional<HttpResponse> handleRequest(const http::request<http::string_body> &req) override;
 
 private:
-  std::string uploadDir_;
+  FileService fileService_;
 };
 
 #endif

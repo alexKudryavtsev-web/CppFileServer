@@ -9,6 +9,9 @@
 #include "http_response.h"
 #include "http_response.cpp"
 
+#include "file_service.h"
+#include "file_service.cpp"
+
 #include "controller.h"
 #include "file_controller.h"
 #include "file_controller.cpp"
