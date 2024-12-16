@@ -47,6 +47,12 @@ std::optional<HttpResponse> FileController::handleRequest(const http::request<ht
   if (req.method() == http::verb::get && req.target().rfind("/file/", 0) == 0)
   {
     std::string uuid_str = req.target().substr(6);
+
+    if (!isValidUUID(uuid_str))
+    {
+      return HttpResponse{http::status::bad_request, "Invalid UUID"};
+    }
+
     std::string filename = uploadDir_ + "/" + uuid_str;
 
     std::filesystem::directory_iterator it(uploadDir_);
