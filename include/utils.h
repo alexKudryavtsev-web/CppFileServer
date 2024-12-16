@@ -20,4 +20,6 @@ std::string generateUUID();
 
 std::string getContentType(const std::string &extension);
 
+bool isValidUUID(const std::string &uuidStr);
+
 #endif

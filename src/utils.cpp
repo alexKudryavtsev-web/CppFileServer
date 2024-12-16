@@ -1,5 +1,6 @@
 #include "utils.h"
 #include <string>
+#include <regex>
 
 std::string trim(const std::string &str)
 {
@@ -40,6 +41,16 @@ T parseValue(const std::string &value)
     }
   }
   return result;
+}
+
+bool isValidUUID(const std::string &uuidStr)
+{
+  if (uuidStr.length() != 36)
+    return false;
+
+  // uuid format like 8-4-4-4-12
+  std::regex uuidRegex("^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$");
+  return std::regex_match(uuidStr, uuidRegex);
 }
 
 std::string generateUUID()
